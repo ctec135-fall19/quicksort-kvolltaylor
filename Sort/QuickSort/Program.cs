@@ -77,11 +77,11 @@ namespace QuickSort
 
             if (lo < hi)
             {
-                // declare and determine a pivot point each time by
+                // declare and determine a partition by
                 // calling the partition method
                 int p = partition(A, lo, hi);
 
-                // swap the value if needed based on the partition 
+                // change the value if needed based on the partition 
                 // uses recursive calls to call itself
                 if (p > 1)
                 {
@@ -106,7 +106,7 @@ namespace QuickSort
         // Partitioning method
         static int partition(int[] A, int lo, int hi)
         {
-            // declare and initialize a pivot point
+            // create a pivot point
             int pivot = A[lo + (hi - lo) / 2];
 
             // declare and initialize highest and lowest index values the
@@ -116,30 +116,32 @@ namespace QuickSort
 
             while (true)
             {
-                // increment the value of the low end up by one while it is
-                // lower than the pivot point selected
+                // increment the value of the low end index up by one while its value
+                // is lower than the pivot point selected
                 do { i = i + 1; }
                 while (A[i] < pivot);
 
-                // increment the value of the high end down by one while it is
-                // higher than the pivot point selected
+                // increment the value of the high end index down by one while its 
+                // value is higher than the pivot point selected
                 do { j = j - 1; }
                 while (A[j] > pivot);
 
-                // if the low end value is higher than or equal to the high end,
-                // then return the high end value
+                // reorder the collection
+                
+                // if the low end index value is higher than or equal to the
+                // high end, then return the high
                 if (i >= j)
                 {
                     return j;
                 }
                 else
                 {
-                    // if the low and high end are equal, then return the high
-                    // end value
+                    // if the values in the low and high index positions are equal,
+                    // then return the high end index
                     if (A[i] == A[j]) return j;
 
                     // declare and intialize a variable to hold the current low
-                    // value and then use it to change positions
+                    // value and then use it to change positions with the higher one
                     int temp = A[i];
                     A[i] = A[j];
                     A[j] = temp;
